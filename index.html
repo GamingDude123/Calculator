@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Jack's Calculator</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class = "Calculator">
+      <div class = "Results"></div>
+      <span class = "Key">7</span>
+      <span class = "Key">8</span>
+      <span class = "Key">9</span>
+      <span class = "Key">C</span>
+      <span class = "Key">4</span>
+      <span class = "Key">5</span>
+      <span class = "Key">6</span>
+      <span class = "Key">/</span>
+      <span class = "Key">1</span>
+      <span class = "Key">2</span>
+      <span class = "Key">3</span>
+      <span class = "Key">*</span>
+      <span class = "Key">0</span>
+      <span class = "Key">00</span>
+      <span class = "Key">.</span>
+      <span class = "Key">+</span>
+      <span class = "Key Equal" style="color:#8ff27e;">=</span>
+      <span class = "Key">-</span>
+      
+  
+    </div>
+
+  </body>
+  <script type="text/javascript">
+    $(document).ready(function(){
+        var displayValue = '0';
+        $('.Results').text(displayValue);
+
+        $('.Key').each(function(index, key){
+            $(this).click(function(e){
+                if(displayValue== '0')displayValue = '';
+                if($(this).text() == 'C'){
+                    displayValue = '0';
+                    $('.Results').text(displayValue);
+
+                }
+                else if ($(this).text() == '=' ){
+                  try{
+                    displayValue = eval(displayValue);
+                    $('.Results').text(displayValue);
+                    displayValue = '0';
+ 
+                  }
+                  catch (e){
+                    displayValue = '0';
+                    $('.Results').text('Access Denied');
+
+
+                  }
+                }
+                else {
+                  displayValue += $(this).text();
+                  $('.Results').text(displayValue);
+  
+                }
+                e.preventDefault()
+            })
+        })
+    })
+</script>
+</html>
